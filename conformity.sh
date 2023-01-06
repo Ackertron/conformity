@@ -1,5 +1,12 @@
 #!/bin/bash
+echo "Setting up conformity..."
 
-source scripts/*.sh
-source source/*.sh
+pushd /Users/eric.ackerson/code/conformity > /dev/null
+
+for file in private/*.sh; do source $file; done
+for file in scripts/*.sh; do source $file; done
+for file in source/*.sh; do source $file; done
+
 pathadd $(pwd)/scripts/
+
+popd > /dev/null
