@@ -4,7 +4,7 @@ __fzf_dir_cmd="find -L . -mindepth 1 -path '*/\.*' -prune -o -type d -print 2> /
 # Optionally change this to suit your environment
 __aws_cmd="aws"
 
-__aws_sso_url="https://upside-services.awsapps.com/start"
+__aws_sso_url=$AWS_SSO_URL
 __aws_sso_region="us-east-1"
 __aws_profile_region_default="us-east-1"
 
@@ -109,4 +109,9 @@ EOL
 
   eval "$__aws_cmd sso login --profile $profile"
   aws-env "$profile"
+}
+
+# For setting your EKS context
+function eks-cluster {
+  aws eks update-kubeconfig --name "$1"
 }
